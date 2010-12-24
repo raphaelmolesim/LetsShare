@@ -1,12 +1,12 @@
 Project Plan
 
-Rename the classes Refund, and Payment (Maybe become only one) ==> Done!
-The debtors should have some way to pay the creditors ==> Done!
-Find a Layout
-Create a rails project
-Create database and models
-==> View changes
+1)Rename the classes Refund, and Payment (Maybe become only one) ==> Done!
+2)The debtors should have some way to pay the creditors ==> Done!
+3)Find a Layout
+4)Create a rails project
+5)Create database and models
+6)==> View changes
 
-Change Person to User
-Separate the bills of a user per project
+7)Change Person to User
+8)Separate the bills of a user per project
 
