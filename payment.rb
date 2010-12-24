@@ -1,9 +1,9 @@
 class Payment
 	
-	attr_accessor :debtor, :amount
+	attr_accessor :person, :amount
 	
 	def initialize person, amount
-		@debtor = person
+		@person = person
 		@amount = amount
 	end
 	

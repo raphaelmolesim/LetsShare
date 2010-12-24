@@ -1,6 +1,5 @@
 require "person"
 require "project"
-require "refund"
 require "bill"
 require "payment"
 
@@ -20,7 +19,7 @@ describe Project do
 		@project.number_of_participants.should be == 2
 	end
 	
-	it "should say how much each creditor should be refund" do
+	it "should say how much each person should be refund" do
 		participants = [Person.new("Raphael"), Person.new("Victor"), Person.new("Stephanie"), 
 										Person.new("Tati"), Person.new("Alex")]
 		participants[0].payed Bill.new 10.71
@@ -29,14 +28,14 @@ describe Project do
 		participants.each {|person| @project.add_participant person }
 		media = (10.71 + 5.48 + 2.19) / 5
 		
-		@project.refunds.size.should be == 2		
-		@project.refunds[0].creditor.should be == participants[0]
-		@project.refunds[0].amount.should be == 10.71 - media
-		@project.refunds[1].creditor.should be == participants[1]
-		@project.refunds[1].amount.should be == 5.48 - media
+		@project.credits.size.should be == 2		
+		@project.credits[0].person.should be == participants[0]
+		@project.credits[0].amount.should be == 10.71 - media
+		@project.credits[1].person.should be == participants[1]
+		@project.credits[1].amount.should be == 5.48 - media
 	end
 	
-	it "should say how much each debtor should pay" do 
+	it "should say how much each person should pay" do 
 		participants = [Person.new("Raphael"), Person.new("Victor"), Person.new("Stephanie"), 
 										Person.new("Tati"), Person.new("Alex")]
 		participants[0].payed Bill.new 10.71
@@ -45,13 +44,13 @@ describe Project do
 		participants.each {|person| @project.add_participant person }
 		media = (10.71 + 5.48 + 2.19) / 5
 		
-		@project.payments.size.should be == 3
-		@project.payments[0].debtor.should be == participants[2]
-		@project.payments[0].amount.should be == media - participants[2].total_spent
-		@project.payments[1].debtor.should be == participants[3]
-		@project.payments[1].amount.should be == media
-		@project.payments[2].debtor.should be == participants[4]
-		@project.payments[2].amount.should be == media
+		@project.debts.size.should be == 3
+		@project.debts[0].person.should be == participants[2]
+		@project.debts[0].amount.should be == media - participants[2].total_spent
+		@project.debts[1].person.should be == participants[3]
+		@project.debts[1].amount.should be == media
+		@project.debts[2].person.should be == participants[4]
+		@project.debts[2].amount.should be == media
 	end
 	
 end

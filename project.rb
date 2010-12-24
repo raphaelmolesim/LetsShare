@@ -1,39 +1,39 @@
 class Project
 	
-	attr_accessor :name, :refunds, :payments
+	attr_accessor :name, :credits, :debts
 
 	def initialize name
 		@name = name
 		@participants = []
-		@refunds = []
-		@payments = []
+		@credits = []
+		@debts = []
 	end
 	
 	def add_participant person
 		@participants << person
-		calculate_refunds
-		calculate_payments
+		calculate_credits
+		calculate_debts
 	end
 	
 	def number_of_participants
 		@participants.size
 	end
 	
-	def calculate_refunds
-		@refunds = []
+	def calculate_credits
+		@credits = []
 		creditors = @participants.find_all { |participant| participant.total_spent > 0 }
 		creditors.each do |creditor|
 			amount = calculate_amount(creditor)
-			@refunds << Refund.new(creditor, amount) if amount > 0
+			@credits << Payment.new(creditor, amount) if amount > 0
 		end
 	end
 	
-	def calculate_payments
-		@payments = []
-		debtors = @participants - @refunds.collect { |refund| refund.creditor }
+	def calculate_debts
+		@debts = []
+		debtors = @participants - @credits.collect { |credit| credit.person }
 		debtors.each do |debtor|
 			amount = media - debtor.total_spent
-			@payments << Payment.new(debtor, amount) if amount > 0
+			@debts << Payment.new(debtor, amount) if amount > 0
 		end
 	end
 	
