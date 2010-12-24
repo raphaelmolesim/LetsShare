@@ -1,7 +1,7 @@
 Project Plan
 
 Rename the classes Refund, and Payment (Maybe become only one) ==> Done!
-The debtors should have some way to pay the creditors
+The debtors should have some way to pay the creditors ==> Done!
 Find a Layout
 Create a rails project
 Create database and models
