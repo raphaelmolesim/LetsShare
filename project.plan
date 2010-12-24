@@ -1,0 +1,11 @@
+Features
+
+Rename the classes Refund, and Payment (Maybe become only one)
+The debtors should have some way to pay the creditors
+Change Person to User
+Separate the bills of a user per project
+
+Find a Layout
+Create a rails project
+Create database and models
+==> View changes
