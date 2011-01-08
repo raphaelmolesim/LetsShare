@@ -1,14 +1,89 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-  <title>LetsShare</title>
-  <%= stylesheet_link_tag :all %>
+	<title>Noodle Business Template</title>
+	<%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
+	<!--[if lte IE 7]>
+		<link href="css/iehacks.css" rel="stylesheet" type="text/css" />
+	<![endif]-->	
 </head>
-<body>
 
-<%= yield %>
+<body id="page">
+
+<!-- wrapper -->
+<div class="rapidxwpr floatholder">
+  <div class="rapidxwpr-bottom">
+  
+    <!-- header -->
+    <div id="header">
+    
+      <!-- logo -->
+      <a href="index.html">
+      	<img id="logo" class="correct-png" src="images/logo.png" alt="Home" title="Home" />
+      </a>
+      <!-- / logo -->
+      
+      <!-- quote -->
+      <div class="quote">
+        <img src="images/quote.png" alt="Quote" />
+      </div>
+      <!-- / quote -->
+      
+      <!-- topmenu -->
+      <div id="topmenu">
+        <ul>
+          <li><a href="" class="active"><span>Home</span></a></li>
+          <li><a href=""><span>About</span></a></li>
+          <li><a href=""><span>Blog</span></a></li>
+          <li><a href=""><span>Press</span></a></li>
+          <li><a href=""><span>Contact</span></a></li>
+        </ul>
+      </div>
+      <!-- / topmenu -->
+    
+    </div>
+    <!-- / header -->
+    
+    <!-- main body -->
+    <div id="middle">
+      <div class="background layoutleft">
+      
+        <div id="main" class="clearingfix">
+          <div id="mainmiddle" class="floatbox withright">
+          
+            <%= yield %>
+          
+          </div>
+        </div>
+      
+      </div>
+    </div>
+    <!-- / main body -->
+  
+  </div>
+</div>
+<!-- / wrapper -->
+
+<!-- footer -->
+<div id="footer" class="clearingfix">
+
+  <!-- footermenu -->
+  <div class="footermenu">
+    <span class="copyright">Copyright Let's Share Co.</span>
+    
+  </div>
+  <!-- / footermenu -->
+  
+  <!-- credits -->
+  <div class="credits">
+    <a href="http://studio7designs.com/blog">Design by STUDIO7DESIGNS</a>
+  </div>
+  <!-- / credits -->
+
+</div>
+<!-- / footer -->
 
 </body>
 </html>
