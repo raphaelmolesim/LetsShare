@@ -17,7 +17,7 @@ class HomeController < ApplicationController
     @domain = "https://www.facebook.com/"
     action = "#{@domain}dialog/oauth?"
     parameters = {
-      :client_id => client.client_id,
+      :client_id => client[:client_id],
       :redirect_uri => url(:get_token),
       :scope  => 'user_about_me,email,user_photos,publish_stream',
       :response_type => 'token' }
@@ -28,13 +28,6 @@ class HomeController < ApplicationController
   
   def get_token
     render :get_token
-  end
-  
-  def get_access_token
-    puts "===========>#{params[:access_token]}"
-    session[:access_token] = request.url
-    render :text => request.session_options
-    #redirect_to '/home/profile' 
   end
 
 end

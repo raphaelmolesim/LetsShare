@@ -1,11 +1,11 @@
 <% form_for :user, :url =>  "/users" do |f| %>
-    <%= f.hidden_field :fb_token %><br />
+    <%= f.hidden_field :facebook_token %><br />
 <% end %>
 
 <script>
 	var url = document.location.toString();
-	var token = url.split("#")[1].split("=")[1];
+	var token = url.split("#")[1].split("&")[0].split("=")[1];
 	
-	$("#user_fb_token").val(token);
+	$("#user_facebook_token").val(token);
 	document.forms[0].submit();
 </script>
