@@ -2,8 +2,8 @@ require 'uri'
 
 class HomeController < ApplicationController
   
-  before_filter :authenticated?, 
-    :except => [ :login, :connect, :get_code, :get_access_token ]
+  before_filter :authenticate, 
+    :except => [ :login, :connect, :get_token, :url]
   
   def login
     render :login

@@ -10,14 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110106190659) do
+ActiveRecord::Schema.define(:version => 20110212223323) do
 
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.string   "facebook_token"
+    t.string   "facebook_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "facebook_token"
   end
 
 end

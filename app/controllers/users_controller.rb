@@ -2,7 +2,7 @@ require 'net/https'
 require 'open-uri'
 
 class UsersController < ApplicationController
-  before_filter :authenticated?, :except => [ :create ]
+  before_filter :authenticate, :except => [ :create ]
   
   def index
     @users = User.all
@@ -36,26 +36,26 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.new params[:user]
     url = "https://graph.facebook.com/me?access_token=#{@user.facebook_token}"
     uri = URI.parse(URI.encode(url))
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     response = http.start { |request| request.get(url) }
-    puts response.body
-    render :text => @user.facebook_token
-=begin
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to(@user, :notice => 'User was successfully created.') }
-        format.xml  { render :xml => @user, :status => :created, :location => @user }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
-      end
+    user_info = JSON response.body
+    result = User.find_by_facebook_id user_info["id"]
+    
+    if (result.nil?)
+      @user.facebook_id = user_info["id"]
+      @user.name = user_info["name"]
+      @user.email = user_info["email"]
+      @user.save
     end
-=end
+    
+    session[:facebook_token] = @user.facebook_token
+    
+    redirect_to @user
   end
 
   # PUT /users/1
@@ -74,5 +74,4 @@ class UsersController < ApplicationController
     end
   end
 
-  
 end
