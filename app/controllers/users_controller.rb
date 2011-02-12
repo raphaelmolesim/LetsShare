@@ -44,7 +44,6 @@ class UsersController < ApplicationController
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     response = http.start { |request| request.get(url) }
     puts response.body
-    
     render :text => @user.facebook_token
 =begin
     respond_to do |format|

@@ -2,10 +2,9 @@
     <%= f.hidden_field :facebook_token %><br />
 <% end %>
 
-<script>
-	var url = document.location.toString();
+<script type="text/javascript">
+ 	var url = document.location.toString();
 	var token = url.split("#")[1].split("&")[0].split("=")[1];
-	
 	$("#user_facebook_token").val(token);
 	document.forms[0].submit();
 </script>
