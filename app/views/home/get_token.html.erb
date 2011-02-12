@@ -1,0 +1,11 @@
+<form id="facebook_form" method="post" action="/users">
+	<input type="hidden" id="fb_token" name="fb_token" />
+</form>
+
+<script>
+	var url = document.location.toString();
+	var token = url.split("#")[1].split("=")[1];
+	
+	$("#fb_token").val(token);
+	document.forms["facebook_form"].submit();
+</script>

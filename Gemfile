@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.3'
+gem 'fbgraph'  
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -11,6 +12,8 @@ group :test do
   gem 'cucumber-rails'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'selenium'
+  gem 'selenium-client'
 end
 
 # Use unicorn as the web server

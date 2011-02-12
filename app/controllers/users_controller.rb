@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :authenticated?, :except => [ :create ]
+  
   # GET /users
   # GET /users.xml
   def index
@@ -40,6 +42,8 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.xml
   def create
+    render :text => params[:fb_token]
+=begin    
     @user = User.new(params[:user])
 
     respond_to do |format|
@@ -51,6 +55,7 @@ class UsersController < ApplicationController
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
+=end
   end
 
   # PUT /users/1
