@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticated?, :except => [ :create ]
   
-  # GET /users
-  # GET /users.xml
   def index
     @users = User.all
 
@@ -12,8 +10,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/1
-  # GET /users/1.xml
   def show
     @user = User.find(params[:id])
 
@@ -23,8 +19,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/new
-  # GET /users/new.xml
   def new
     @user = User.new
 
@@ -34,15 +28,13 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
   end
 
-  # POST /users
-  # POST /users.xml
   def create
-    render :text => params[:fb_token]
+    puts "==========> oi"
+    render :text => params[:user][:fb_token]
 =begin    
     @user = User.new(params[:user])
 

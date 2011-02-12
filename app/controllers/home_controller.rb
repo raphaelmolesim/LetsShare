@@ -1,5 +1,4 @@
 require 'uri'
-require 'net/https'
 
 class HomeController < ApplicationController
   
@@ -37,12 +36,5 @@ class HomeController < ApplicationController
     render :text => request.session_options
     #redirect_to '/home/profile' 
   end
-=begin
-  def profile
-    url = "https://graph.facebook.com/me?access_token=#{session[:access_token]}"
-    b = get url
-    
-    render :text => url + " / body : #{b}"
-  end
-=end
+
 end
