@@ -5,7 +5,9 @@ module Facebook
   def self.get_user_info token
     url = "https://graph.facebook.com/me?access_token=#{token}"
     json_data = EasyHttp.get url
-    parse_to_hash json_data
+    user_info = parse_to_hash json_data
+    user_info["token"] = token
+    user_info 
   end
   
   def self.authorization_url

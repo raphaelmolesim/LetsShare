@@ -3,6 +3,7 @@ LetsShare::Application.routes.draw do
   
   match 'home/connect' => 'home#connect'
   match 'home/get_token' => 'home#get_token'
+  #match ''
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
