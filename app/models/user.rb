@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  include EasyHttp
   
   def self.get facebook_token
     user_info = Facebook.get_user_info facebook_token
@@ -14,11 +13,29 @@ class User < ActiveRecord::Base
     attributes.each { |attr| eval "user.#{attr} = json_data[\"#{attr}\"]" }
     user.facebook_id = json_data["id"]
     user.facebook_token = json_data["token"]
+    user.username = json_data["link"]
     user
   end
   
   def self.facebook_attribute? attribute
-    not attribute.include? "facebook" and not attribute.include? "at"
+    not attribute.include? "facebook" and not attribute.include? "at" and not attribute.include? "username"
+  end
+  
+  def username link
+    if link.include? "profile.php"
+      self.username = generate_username 
+    elsif link.include? "facebook.com"
+      self.username = link.split("/").last
+    else
+      self.username = link
+    end
+  end
+  
+  def generate_username
+    username = self.name.downcase.gsub(" ", ".")
+    user = User.find_by_username username
+    return username if user.nil?
+    
   end
   
 end
