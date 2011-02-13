@@ -21,21 +21,29 @@ class User < ActiveRecord::Base
     not attribute.include? "facebook" and not attribute.include? "at" and not attribute.include? "username"
   end
   
-  def username link
-    if link.include? "profile.php"
-      self.username = generate_username 
-    elsif link.include? "facebook.com"
-      self.username = link.split("/").last
-    else
-      self.username = link
-    end
+  def username=(link)
+    @attributes["username"] = link.include?("http://") ? get_username_based_on_link(link) : link
   end
   
-  def generate_username
-    username = self.name.downcase.gsub(" ", ".")
-    user = User.find_by_username username
-    return username if user.nil?
+  def username
+    @attributes["username"]
+  end
     
-  end
+  private
   
+    def get_username_based_on_link link
+      return generate_username if link.include? "profile.php"
+      link.split("/").last
+    end
+  
+    def generate_username
+      username = self.name.downcase.gsub(" ", ".")
+      user = User.find_by_username username
+      return username if user.nil?
+      same_name = User.where("username LIKE '#{username}%'")
+      diff = same_name.collect { |u| u.username[username.length, u.username.length - username.length].to_i }
+      id = diff.max + 1
+      "#{username}#{id}"
+    end
+    
 end
