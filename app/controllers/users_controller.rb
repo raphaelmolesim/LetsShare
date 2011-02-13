@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_filter :authenticate, :except => [ :create ]
-  include EasyHttp
   
   def index
     @users = User.all
@@ -34,29 +33,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new params[:user]
-    url = "https://graph.facebook.com/me?access_token=#{@user.facebook_token}"
-    json_data = EasyHttp.get url
-    user_info = JSON json_data
-    result = User.find_by_facebook_id user_info["id"]
-    
-    if (result.nil?)
-      @user.facebook_id = user_info["id"]
-      @user.name = user_info["name"]
-      @user.email = user_info["email"]
-    else 
-      result.facebook_token = @user.facebook_token
-      @user = result
-    end
-    
+    @user = User.get params[:user][:facebook_token]
     @user.save
     session[:facebook_token] = @user.facebook_token
-    
     redirect_to @user
   end
 
-  # PUT /users/1
-  # PUT /users/1.xml
   def update
     @user = User.find(params[:id])
 

@@ -1,15 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
-  before_filter :authenticate,
-    :except => [ :client ]
+  before_filter :authenticate
     
   protected
-
-    def client      
-      @client ||= { :client_id => '102507649823844',
-                    :secret_id => 'c75f7604c0aaf4168368e3ce7f43cfbc' }
-    end
   
     def authenticate
       redirect_to :controller => :home, :action => :login  if not authenticated?
