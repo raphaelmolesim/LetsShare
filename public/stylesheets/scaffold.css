@@ -1,3 +1,13 @@
+#profile user_info { width: 30%;}
+#profile friends { width: 30%;}
+#profile project { width: 30%;}
+
+.right_panel { float: left; width:50%; }
+.left_panel { float : right; width:50%; }
+.container { width: 70%; }
+.left {	float: left; }
+.right { float: right; }
+
 body { background-color: #fff; color: #333; }
 
 body, p, ol, ul, td {
