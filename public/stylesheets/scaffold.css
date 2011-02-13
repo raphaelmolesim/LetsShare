@@ -1,19 +1,26 @@
+#profile {  }
 #profile user_info { width: 30%;}
 #profile friends { width: 30%;}
 #profile project { width: 30%;}
 
-.right_panel { float: left; width:50%; }
-.left_panel { float : right; width:50%; }
-.container { width: 70%; }
+.header { border-bottom-style: solid; }
+.right_panel { width:50%; float: right }
+.left_panel { width:50%; float: left; }
+.container { float: left; width:763px; background-color: white; padding: 20px;	
+	border-radius: 20px; -moz-border-radius: 20px; -webkit-border-radius: 20px;
+	-khtml-border-radius: 20px;}
+
 .left {	float: left; }
 .right { float: right; }
+.centralizator { margin: 1em auto; width: 763px; position: relative; z-index: 1;}
 
-body { background-color: #fff; color: #333; }
-
+body { background: url('../../images/background.jpg') repeat fixed 0 0 #000000; color: #333; }
+ 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size:   13px;
   line-height: 18px;
+  list-style-type: none;
 }
 
 pre {

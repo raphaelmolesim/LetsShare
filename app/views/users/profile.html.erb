@@ -1,57 +1,67 @@
-<p id="notice"><%= notice %></p>
-
-<div id="profile" class="container">
-
-<div id="user_info" class="right_panel">
-	<h2>Info</h2>
+<div id="profile" class="container">	
+	<div class="header">
+		<div class="right">
+			<a>Home</a>
+			<a>My Profile</a>
+			<a>Projects</a>
+			<a>Friends</a>
+			<a>Logout</a>
+		</div>
+		<h1>Profile</h1>
+	</div>
 	
+	<p id="notice"><%= notice %></p>
+	
+	<div id="user_info" class="left_panel">
+		<h2>Info</h2>
+	
+		<div>
+			<img src="http://profile.ak.fbcdn.net/hprofile-ak-snc4/173903_100000868185751_8165925_n.jpg" />
+		</div>
+	
+		<div>
+			<p>
+			  <b>Name:</b>
+			  <%= @user.name %>
+			</p>
+
+			<p>
+			  <b>Email:</b>
+			  <%= @user.email %>
+			</p>
+
+			<p>
+			  <b>Last log in:</b>
+			  <%= @user.updated_at %>
+			</p>
+
+			<p>
+			  <b>Have been associated since:</b>
+			  <%= @user.created_at %>
+			</p>
+		</div>
+	</div>
+
+	<div class="right_panel">
+		<div id="projects">
+			<h2>Projects</h2>
+			<ul>
+				<li>Christmas Party (23/12/2010)</li>
+				<li>Paulo's Birthday (23/12/2010)</li>
+				<li>Dinner in John's House (23/12/2010)</li>
+				<li>Rachel's Leaving Party (23/12/2010)</li>
+			<ul>
+		</div>
+	
+		<div id="friends">
+			<h2>Friends</h2>
+			<ul>
+				<li><img src="http://profile.ak.fbcdn.net/hprofile-ak-snc4/41430_1599067391_4915_q.jpg" /></li>
+				<li><img src="http://profile.ak.fbcdn.net/hprofile-ak-snc4/41651_764068674_852932_q.jpg" /></li>
+				<li><img src="http://profile.ak.fbcdn.net/hprofile-ak-snc4/161431_100000723203406_8210216_q.jpg" /></li>
+				<li><img src="http://profile.ak.fbcdn.net/hprofile-ak-snc4/70520_699809128_8053971_q.jpg" /></li>
+			<ul>
+		</div>
 	<div>
-		<img src="http://profile.ak.fbcdn.net/hprofile-ak-snc4/173903_100000868185751_8165925_n.jpg" />
-	</div>
 	
-	<div>
-		<p>
-		  <b>Name:</b>
-		  <%= @user.name %>
-		</p>
-
-		<p>
-		  <b>Email:</b>
-		  <%= @user.email %>
-		</p>
-
-		<p>
-		  <b>Last log in:</b>
-		  <%= @user.updated_at %>
-		</p>
-
-		<p>
-		  <b>Have been associated since:</b>
-		  <%= @user.created_at %>
-		</p>
-	</div>
-</div>
-
-<div class="right_panel">
-	<div id="projects">
-		<h2>Projects</h2>
-		<ul>
-			<li>Christmas Party (23/12/2010)</li>
-			<li>Paulo's Birthday (23/12/2010)</li>
-			<li>Dinner in John's House (23/12/2010)</li>
-			<li>Rachel's Leaving Party (23/12/2010)</li>
-		<ul>
-	</div>
-	
-	<div id="friends">
-		<h2>Friends</h2>
-		<ul>
-			<li><img src="http://profile.ak.fbcdn.net/hprofile-ak-snc4/41430_1599067391_4915_q.jpg" /></li>
-			<li><img src="http://profile.ak.fbcdn.net/hprofile-ak-snc4/41651_764068674_852932_q.jpg" /></li>
-			<li><img src="http://profile.ak.fbcdn.net/hprofile-ak-snc4/161431_100000723203406_8210216_q.jpg" /></li>
-			<li><img src="http://profile.ak.fbcdn.net/hprofile-ak-snc4/70520_699809128_8053971_q.jpg" /></li>
-		<ul>
-	</div>
-
-<div>
 </div>
