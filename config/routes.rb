@@ -1,9 +1,9 @@
 LetsShare::Application.routes.draw do
-  resources :users
+  resources :users, :only => [:create, :edit]
   
   match 'home/connect' => 'home#connect'
   match 'home/get_token' => 'home#get_token'
-  #match ''
+  match ':username' => 'users#profile', :constraints => { :username => /([A-z]|[0-9]|\.|\-|\_)+/ }
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
