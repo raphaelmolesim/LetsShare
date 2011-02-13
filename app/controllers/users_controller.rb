@@ -1,8 +1,6 @@
-require 'net/https'
-require 'open-uri'
-
 class UsersController < ApplicationController
   before_filter :authenticate, :except => [ :create ]
+  include EasyHttp
   
   def index
     @users = User.all
@@ -38,21 +36,20 @@ class UsersController < ApplicationController
   def create
     @user = User.new params[:user]
     url = "https://graph.facebook.com/me?access_token=#{@user.facebook_token}"
-    uri = URI.parse(URI.encode(url))
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    response = http.start { |request| request.get(url) }
-    user_info = JSON response.body
+    json_data = EasyHttp.get url
+    user_info = JSON json_data
     result = User.find_by_facebook_id user_info["id"]
     
     if (result.nil?)
       @user.facebook_id = user_info["id"]
       @user.name = user_info["name"]
       @user.email = user_info["email"]
-      @user.save
+    else 
+      result.facebook_token = @user.facebook_token
+      @user = result
     end
     
+    @user.save
     session[:facebook_token] = @user.facebook_token
     
     redirect_to @user

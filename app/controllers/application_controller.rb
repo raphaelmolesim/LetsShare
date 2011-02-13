@@ -18,8 +18,8 @@ class ApplicationController < ActionController::Base
   private
     
     def authenticated?
-      return false if not session.include? :facebook_token
-      not User.find_by_facebook_token(session[:facebook_token]).nil?
+      return false if not session.include? "facebook_token"
+      not User.find_by_facebook_token(session["facebook_token"]).nil?
     end
   
 end
