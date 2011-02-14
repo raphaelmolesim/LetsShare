@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    ZenTest (4.4.2)
     abstract (1.0.0)
     actionmailer (3.0.3)
       actionpack (= 3.0.3)
@@ -29,6 +30,8 @@ GEM
       activesupport (= 3.0.3)
     activesupport (3.0.3)
     arel (2.0.6)
+    autotest (4.4.6)
+      ZenTest (>= 4.4.1)
     builder (2.1.2)
     capybara (0.4.0)
       celerity (>= 0.7.9)
@@ -94,6 +97,19 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.8.7)
+    rspec (2.5.0)
+      rspec-core (~> 2.5.0)
+      rspec-expectations (~> 2.5.0)
+      rspec-mocks (~> 2.5.0)
+    rspec-core (2.5.1)
+    rspec-expectations (2.5.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.5.0)
+    rspec-rails (2.5.0)
+      actionpack (~> 3.0)
+      activesupport (~> 3.0)
+      railties (~> 3.0)
+      rspec (~> 2.5.0)
     rubyzip (0.9.4)
     selenium (0.0.3)
       jeweler
@@ -116,11 +132,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autotest
   capybara
   cucumber-rails
   database_cleaner
   json
   rails (= 3.0.3)
+  rspec (>= 1.2.0)
+  rspec-rails (>= 1.2.0)
   selenium
   selenium-client
   sqlite3-ruby
