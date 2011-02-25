@@ -6,14 +6,19 @@ class ApplicationController < ActionController::Base
   protected
   
     def authenticate
-      redirect_to :controller => :home, :action => :login  if not authenticated?
+      redirect_to :controller => "home", :action => params[:action] if not authenticated?
     end
   
   private
     
     def authenticated?
-      return false if not session.include? "facebook_token"
-      not User.find_by_facebook_token(session["facebook_token"]).nil?
+      if not session.include? "facebook_token"
+        params[:action] = :access_denied
+        return false 
+      end
+      result = !User.find_by_facebook_token(session["facebook_token"]).nil?
+      params[:action] = :expired if not result
+      result
     end
   
 end
