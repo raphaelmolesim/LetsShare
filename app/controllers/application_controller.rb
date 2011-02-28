@@ -16,9 +16,10 @@ class ApplicationController < ActionController::Base
         params[:action] = :access_denied
         return false 
       end
-      result = !User.find_by_facebook_token(session["facebook_token"]).nil?
-      params[:action] = :expired if not result
-      result
+      user = User.find_by_facebook_token(session["facebook_token"])      
+      params[:action] = :expired if user.nil?
+      session["user_id"] = user.id
+      true
     end
   
 end

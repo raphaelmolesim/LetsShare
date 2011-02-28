@@ -7,6 +7,11 @@ class UsersController < ApplicationController
            :locals => { :username => params[:username] } if (@user.nil?)
   end
   
+  def home
+    @user = User.find(session["user_id"])
+    render :action => "error" if @user.nil?
+  end
+  
   def create
     @user = User.get params[:user][:facebook_token]
     @user.save
