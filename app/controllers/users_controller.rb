@@ -16,6 +16,6 @@ class UsersController < ApplicationController
     @user = User.get params[:user][:facebook_token]
     @user.save
     session[:facebook_token] = @user.facebook_token
-    redirect_to "/#{@user.username}"
+    redirect_to "/me"
   end
 end
