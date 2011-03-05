@@ -6,6 +6,7 @@ LetsShare::Application.routes.draw do
   match 'home/access_denied' => 'home#access_denied'
   match 'home/expired' => 'home#expired'
   match 'me' => 'users#home'
+  match 'myprofile' => 'users#my_profile'
   match ':username' => 'users#profile', :constraints => { :username => /([A-z]|[0-9]|\.|\-|\_)+/ }
 
   # The priority is based upon order of creation:

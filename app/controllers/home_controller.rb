@@ -1,9 +1,11 @@
 class HomeController < ApplicationController
   
+  
   before_filter :authenticate, 
     :except => [ :login, :connect, :get_token, :expired, :access_denied]
   
   def login
+    render :layout => "unauthorized"
   end
 
   def expired
@@ -21,6 +23,7 @@ class HomeController < ApplicationController
   end
   
   def get_token
+    render :layout => "thin"
   end
 
 end

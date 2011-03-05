@@ -7,6 +7,11 @@ class UsersController < ApplicationController
            :locals => { :username => params[:username] } if (@user.nil?)
   end
   
+  def my_profile
+    @user = User.find(session["user_id"])
+    redirect_to "/#{@user.username}"
+  end
+  
   def home
     @user = User.find(session["user_id"])
     render :action => "error" if @user.nil?
