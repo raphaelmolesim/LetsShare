@@ -17,7 +17,7 @@
 					<a>Friends</a>
 					<a>Logout</a>
 				</div>
-				<h1><%= params[:action].capitalize %></h1>
+				<h1><%= params[:action].capitalize %> <%= params[:controller].singularize if params[:controller] != "user"%></h1>
 			</div>
 			<%= yield %>
 		</div>

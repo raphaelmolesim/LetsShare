@@ -1,4 +1,6 @@
 LetsShare::Application.routes.draw do
+  resources :projects
+
   resources :users, :only => [:create, :edit]
   
   match 'home/connect' => 'home#connect'

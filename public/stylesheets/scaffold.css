@@ -4,8 +4,10 @@
 #profile project { width: 30%;}
 
 .header { border-bottom-style: solid; }
-.right_panel { width:50%; float: right }
+.right_panel { width:50%; float: right; }
 .left_panel { width:50%; float: left; }
+.right_panel div { padding: 5px 20px 0px 20px; }
+.left_panel div { padding: 5px 20px 0px 20px; }
 .container { float: left; width:763px; background-color: white; padding: 20px;	
 	border-radius: 20px; -moz-border-radius: 20px; -webkit-border-radius: 20px;
 	-khtml-border-radius: 20px;}
