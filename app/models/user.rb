@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   
-  has_many :projects, :class_name => "Project", :foreign_key => "owner_id"
+  has_many :my_projects, :class_name => "Project", :foreign_key => "owner_id"
+  has_and_belongs_to_many :projects
   
   def self.get facebook_token
     user_info = Facebook.get_user_info facebook_token
