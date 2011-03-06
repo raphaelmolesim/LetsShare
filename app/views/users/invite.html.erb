@@ -1,0 +1,21 @@
+<div class="full_size">
+
+	<%= form_for :user, :url =>  "/users/search", :remote => true do |f| %>
+	    <%= f.hidden_field :project_id, :value => @project.id %><br />
+		
+		<p>
+			<%= f.label "Name or Email" %><br />
+			<%= f.text_field :name %>
+		</p>
+		
+		<p>
+			<%= f.submit "Send" %>
+		</p>
+	<% end %>
+	
+	<div id="result">
+		<%= render :partial => "search", :locals => { :users => [] } %>
+	</div>
+	
+	<a>Add</a>
+</div>
