@@ -1,21 +1,49 @@
-<div class="full_size">
+<div class="left_panel">
 
 	<%= form_for :user, :url =>  "/users/search", :remote => true do |f| %>
-	    <%= f.hidden_field :project_id, :value => @project.id %><br />
-		
 		<p>
 			<%= f.label "Name or Email" %><br />
 			<%= f.text_field :name %>
 		</p>
 		
 		<p>
-			<%= f.submit "Send" %>
+			<%= f.submit "Search" %>
 		</p>
 	<% end %>
 	
 	<div id="result">
-		<%= render :partial => "search", :locals => { :users => [] } %>
+		<%= render :partial => "select_list", :locals => { :users => [] } %>
 	</div>
 	
-	<a>Add</a>
+	<a id="add_users">Add</a>
 </div>
+
+<div class="right_panel">
+	<div>
+		<ul id="selected_users"></ul>
+		
+		<%= form_for :user, :url =>  "/users/send" do |f| %>
+			<%= f.hidden_field "ids" %>
+			<%= f.hidden_field :project_id, :value => @project.id %>
+			<%= f.submit "Send" %>
+		<% end %>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$().ready(function() {
+		$("#add_users").click(function() {
+			var ids = "";
+			$("input:checked").each(function(index) {
+				var id = $(this).attr("value");
+				var name = $(this).attr("name");
+				$("#selected_users").append(
+					"<li name=\"" + id + "\">" + name + "</li>"
+				);
+				if (index > 0) ids += ",";
+				ids += id;
+			});
+			$("#user_ids").val(ids);
+		});
+	});
+</script>

@@ -4,6 +4,7 @@ LetsShare::Application.routes.draw do
   resources :users, :only => [:create, :edit]
   match 'users/invite/:project_id' => 'users#invite'
   match 'users/search' => 'users#search', :via => :post
+  match 'users/send' => 'users#send_invite', :via => :post
   
   match 'home/connect' => 'home#connect'
   match 'home/get_token' => 'home#get_token'

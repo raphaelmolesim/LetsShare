@@ -1,0 +1,7 @@
+<form>
+<ul>
+	<% users.each do |user| %>
+		<li><input type="checkbox" value="<%= user.id %>" name="<%= user.name %>" /> <%= user.name %></li>
+	<% end %>
+</ul>
+</form>

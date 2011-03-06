@@ -23,13 +23,17 @@ class UsersController < ApplicationController
     session[:facebook_token] = @user.facebook_token
     redirect_to "/me"
   end
-  
+
   def invite
     @project = Project.find(params[:project_id])
   end
   
   def search
     @users = User.where("name LIKE ?", "%#{params[:user][:name]}%")
+  end
+
+  def send_invite
+    redirect_to "/projects/#{params[:user][:project_id]}"
   end
 
 end
