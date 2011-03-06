@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   end
   
   def self.facebook_attribute? attribute
-    [:facebook, :username, :at].collect { |str| return false if attribute.include?(str) }
+    [:facebook, :username, :at].collect { |str| return false if attribute.include?(str.to_s) }
     attribute != "id"
   end
   
