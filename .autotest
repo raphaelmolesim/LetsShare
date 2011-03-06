@@ -9,7 +9,7 @@ module Autotest::Growl
     output = results.slice(/(\d+)\s+examples?,\s*(\d+)\s+failures?(,\s*(\d+)\s+pending)?/)
     if output
       if $~[2].to_i > 0
-        growl "You Broke Something!", "#{output}", "~/.error.png", 2
+        growl "You Broke Something!", "#{output}", "./error.png", 2
       else
         growl "Well Done!", "#{output}", "./success.png"
       end
